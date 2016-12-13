@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    </head>
+    <script>
+        $(function() {
+            $('#weeklyUpdate').click(function() {
+                var input = $('#input').val();
+                var table = $(input);
+
+                var records = table.find('tbody tr');
+                var output= [];
+                records.each(function() {
+                    var tr = $(this);
+                    var i = 0;
+
+                    var name = '';
+                    var ranking = 0;
+                    var position = 0;
+                    var positionRanking = 0;
+                    var team = '';
+                    
+                    name = $(tr.find('td')[0]).find('a').html();
+                    ranking = $(tr.find('td')[0]).html().split('.')[0];
+                    position = $(tr.find('td')[1]).html();
+                    team = $(tr.find('td')[2]).html();
+                    positionRanking = $(tr.find('td')[3]).html();
+
+                    output.push({ name: name, ranking: ranking, position: position, team: team, positionRanking: positionRanking, enabled: true});
+                });
+
+                $('#final').val(JSON.stringify(output));
+            });
+        });
+    </script>
+    <body>
+        <textarea id="input"></textarea>
+        <button id="weeklyUpdate">Process Data</button>
+        <hr/>
+        <textarea id="final" style="width:800px;height:500px;"></textarea>
+
+    </body>
+</html>
