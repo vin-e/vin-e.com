@@ -1,5 +1,12 @@
 webpackJsonp([1],{
 
+/***/ "0eh5":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "3zcb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -95,13 +102,6 @@ var HTTP = exports.HTTP = _axios2.default.create({
   baseURL: 'http://discover-appserver-java.us-west-2.elasticbeanstalk.com/'
   // baseURL: 'http://projects.tech-antics.com:9100/'
 });
-
-/***/ }),
-
-/***/ "BZP1":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -352,6 +352,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ var home = ({
   name: 'home',
@@ -361,14 +362,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-7f3a1940","hasScoped":false,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/home/home.vue
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.createWorkbook}},[_vm._v("Create Work Book")])])}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-124d0825","hasScoped":false,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/home/home.vue
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("Home Page")]),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.createWorkbook}},[_vm._v("Create Work Book")])])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ var home_home = (esExports);
 // CONCATENATED MODULE: ./src/home/home.vue
 function injectStyle (ssrContext) {
-  __webpack_require__("BZP1")
+  __webpack_require__("cvDV")
 }
 var normalizeComponent = __webpack_require__("VU/8")
 /* script */
@@ -718,10 +719,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // eslint-disable-line no-unused-vars
 
+// Vue.use(VueToastr2, {})
 _vue2.default.use(_vueFileLoader2.default);
 
 // import services to register injection
 
+// import VueToastr2 from 'vue-toastr-2'
 
 // Discover-Web components, pages and store
 
@@ -749,13 +752,6 @@ var vm = new _vue2.default({
 });
 
 window.vm = vm;
-
-/***/ }),
-
-/***/ "O8Lw":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -1568,18 +1564,19 @@ var jQuery = window.jQuery;
       }
     },
     removeTimelineConfirmed: function removeTimelineConfirmed() {
-      var _this = this;
-
+      var self = this;
       this.removeModal.modal('hide');
       this.$nextTick(function () {
-        _this.$store.commit('removeTimeline', _this.removeId);
-        _this.$nextTick(function () {
-          if (_this.$route.params.id - 0 === _this.removeId) {
-            _this.navigateToFirstVisible();
+        self.$store.commit('removeTimeline', self.removeId);
+        self.$nextTick(function () {
+          if (self.$route.params.id - 0 === self.removeId) {
+            self.navigateToFirstVisible();
           }
 
-          _this.removeId = undefined;
+          self.removeId = undefined;
         });
+
+        self.updateAllTimelineTitles();
       });
     },
     removeTimeline: function removeTimeline(id) {
@@ -1599,12 +1596,14 @@ var jQuery = window.jQuery;
               self.addTimeline(t);
             });
 
-            // alert loaded
+            // debugger
+            // self.$toastr.info(`Workspace Loaded (${res.data.duration})`, 'Title')
           } else {
               // alert no data to be loaded
             }
 
           self.updateAllTimelineTitles();
+          self.navigateToFirstVisible();
           // emit event after successfully loading.
           self.$bus.$emit('loadDefaultTimeline');
         } else {
@@ -1636,12 +1635,12 @@ var jQuery = window.jQuery;
       });
     },
     updateAllTimelineTitles: function updateAllTimelineTitles() {
-      var _this2 = this;
-
-      console.log('titles updated');
+      var self = this;
       // when timeline ids are updated we need to update the titles
-      this.timelineTitles = this.timelines.map(function (t) {
-        return _this2.$store.getters['timelineModule' + t + '/timeline'].name || 'name not found';
+      this.$nextTick(function () {
+        self.timelineTitles = self.timelines.map(function (t) {
+          return self.$store.getters['timelineModule' + t + '/timeline'].name || 'name not found';
+        });
       });
     },
     updateTable: function updateTable(e) {
@@ -1661,14 +1660,14 @@ var jQuery = window.jQuery;
     }
   }, Object(vuex_esm["mapMutations"])(['addTimeline', 'removeAllTimelines', 'increment']))
 });
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-86eb01ec","hasScoped":false,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/app/app.vue
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-3890635c","hasScoped":false,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/app/app.vue
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('div',{staticClass:"container-fluid"},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col-xs-12 col-md-6 col-md-offset-3 text-center padding-to"},[_c('div',{staticClass:"panel panel-default compute"},[_c('div',{staticClass:"panel-body"},[_c('button',{staticClass:"btn btn-info",on:{"click":_vm.timelineLoad}},[_vm._v("Load Workspaces")]),_vm._v(" "),_c('button',{staticClass:"btn btn-info",on:{"click":_vm.timelineSave}},[_vm._v("Save All Workspaces")]),_vm._v(" "),_c('button',{staticClass:"btn btn-info",on:{"click":_vm.timelineRemove}},[_vm._v("Remove Workspaces")])])])])]),_vm._v(" "),_c('div',{staticClass:"row app-container"},[_c('div',{staticClass:"col-md-12"},[_c('router-view',{key:_vm.$route.fullPath})],1)]),_vm._v(" "),_c('nav',{staticClass:"navbar navbar-fixed-bottom"},[_c('div',{staticClass:"navbar-left"},[_c('router-link',{staticClass:"nav-icons nav-large-icon nav-home-icon",attrs:{"to":"/"}},[_c('i',{staticClass:"fa fa-home"})]),_vm._v(" "),_c('a',{staticClass:"nav-icons nav-large-icon nav-context-icon",on:{"click":function($event){$event.preventDefault();_vm.openContext($event)}}},[_c('i',{staticClass:"fa fa-list"})])],1),_vm._v(" "),_c('draggable',{staticClass:"nav navbar-nav dragArea",attrs:{"element":'ul',"role":"tablist","list":_vm.timelines,"options":_vm.draggableOptions},on:{"end":_vm.onEndDrag}},_vm._l((_vm.timelines),function(t,index,key){return _c('li',{key:key,staticClass:"draggable"},[_c('router-link',{attrs:{"to":("/timeline/" + t)}},[_c('span',{attrs:{"id":t,"contenteditable":_vm.contentEditable},on:{"input":_vm.updateTimelineName,"dblclick":function($event){_vm.changeContentEditable(true)},"blur":function($event){_vm.changeContentEditable(false)}}},[_vm._v(_vm._s(_vm.timelineTitles[index]))]),_vm._v(" "),_c('span',{staticClass:"nav-remove-timeline",on:{"click":function($event){_vm.removeTimeline(t)}}},[_c('i',{staticClass:"fa fa-close"})])])],1)})),_vm._v(" "),_c('div',{staticClass:"navbar-left"},[_c('a',{staticClass:"nav-icons nav-add-icon",on:{"click":function($event){$event.preventDefault();_vm.openAddTimelineModal($event)}}},[_c('i',{staticClass:"fa fa-plus"})])])],1)]),_vm._v(" "),_c('context-menu',{ref:"ctxMenu",attrs:{"id":"context-menu"}},_vm._l((_vm.timelines),function(t,index,key){return _c('li',{key:key,on:{"click":function($event){_vm.navigateTo(("/timeline/" + t))}}},[_c('a',{domProps:{"innerHTML":_vm._s(_vm.timelineTitles[index])}})])})),_vm._v(" "),_c('div',{staticClass:"modal fade",attrs:{"id":"timelineModal","tabindex":"-1","role":"dialog","aria-labelledby":"myModalLabel"}},[_c('div',{staticClass:"modal-dialog",attrs:{"role":"document"}},[_c('div',{staticClass:"modal-content"},[_vm._m(0,false,false),_vm._v(" "),_c('div',{staticClass:"modal-body"},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col-md-12"},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":_vm.uid}},[_vm._v("UID")]),_vm._v(" "),_c('input',{staticClass:"form-control",attrs:{"type":"text","placeholder":"UID"},domProps:{"value":_vm.uid},on:{"input":_vm.updateUid}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":_vm.table}},[_vm._v("Open Table")]),_vm._v(" "),_c('input',{staticClass:"form-control",attrs:{"type":"text","placeholder":"Open Table"},domProps:{"value":_vm.table},on:{"input":_vm.updateTable}})])])])]),_vm._v(" "),_c('div',{staticClass:"modal-footer"},[_c('button',{staticClass:"btn btn-default",attrs:{"type":"button","data-dismiss":"modal"}},[_vm._v("Cancel")]),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",attrs:{"type":"button"},on:{"click":_vm.createTimeline}},[_vm._v("Add")])])])])]),_vm._v(" "),_c('div',{staticClass:"modal fade",attrs:{"id":"confirmModal","tabindex":"-1","role":"dialog","aria-labelledby":"myRemoveLabel"}},[_c('div',{staticClass:"modal-dialog",attrs:{"role":"document"}},[_c('div',{staticClass:"modal-content"},[_vm._m(1,false,false),_vm._v(" "),_c('div',{staticClass:"modal-body"},[_vm._v("\n          Are you sure you want to delete this worksheet?\n        ")]),_vm._v(" "),_c('div',{staticClass:"modal-footer"},[_c('button',{staticClass:"btn btn-default",attrs:{"type":"button","data-dismiss":"modal"}},[_vm._v("Cancel")]),_vm._v(" "),_c('button',{staticClass:"btn btn-danger",attrs:{"type":"button"},on:{"click":_vm.removeTimelineConfirmed}},[_vm._v("Yes remove!")])])])])])],1)}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal-header"},[_c('button',{staticClass:"close",attrs:{"type":"button","data-dismiss":"modal","aria-label":"Close"}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("×")])]),_vm._v(" "),_c('h4',{staticClass:"modal-title",attrs:{"id":"myModalLabel"}},[_vm._v("Add Worksheet")])])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal-header"},[_c('button',{staticClass:"close",attrs:{"type":"button","data-dismiss":"modal","aria-label":"Close"}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("×")])]),_vm._v(" "),_c('h4',{staticClass:"modal-title",attrs:{"id":"myModalLabel"}},[_vm._v("Are you sure?")])])}]
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ var app_app = (esExports);
 // CONCATENATED MODULE: ./src/app/app.vue
 function injectStyle (ssrContext) {
-  __webpack_require__("O8Lw")
+  __webpack_require__("0eh5")
 }
 var normalizeComponent = __webpack_require__("VU/8")
 /* script */
@@ -1875,6 +1874,13 @@ var HyperGridRepository = function () {
 }();
 
 exports.default = HyperGridRepository;
+
+/***/ }),
+
+/***/ "cvDV":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -2703,4 +2709,4 @@ webpackContext.id = "yK4o";
 /***/ })
 
 },["NHnr"]);
-//# sourceMappingURL=app.7cab9b1ff275424ac9d0.js.map
+//# sourceMappingURL=app.dcca771d72e4ceab646e.js.map
