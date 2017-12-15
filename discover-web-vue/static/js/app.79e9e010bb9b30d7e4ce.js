@@ -105,6 +105,13 @@ var HTTP = exports.HTTP = _axios2.default.create({
 
 /***/ }),
 
+/***/ "5s8i":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "CKtZ":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2710,15 +2717,25 @@ var slick_es6_min_default = /*#__PURE__*/__webpack_require__.n(slick_es6_min);
             self.$store.commit('timelineModule' + self.id + '/updateDuration', res.data.duration);
             self.$store.commit('timelineModule' + self.id + '/updateTotalRows', res.data.totalRows);
             self.$store.commit('timelineModule' + self.id + '/updateColumns', o.columnDefs.filter(function (c) {
-              return c.headerName && c.field;
+              return c.name && c.field;
             }).map(function (c) {
-              return { name: c.headerName.replace(/\r?\n|\r/g, ' '), field: c.field };
+              return { name: c.name.replace(/\r?\n|\r/g, ' '), field: c.field };
             }));
 
             // todo: if coldefs change invalidate all windows
             self.grid.setColumns(o.columnDefs);
             self.grid.updateRowCount();
             self.grid.render();
+
+            if (self.refreshAt) {
+              self.$nextTick(function () {
+                if (self.refreshAtColumn) {
+                  self.refreshColumn(o.columnDefs.length - 1);
+                } else if (self.refreshAtRow) {
+                  self.refreshRow();
+                }
+              });
+            }
           }, function (err) {
             var msg = err.data && err.data.message ? err.data.message : err.statusText;
             console.log(msg);
@@ -2731,33 +2748,32 @@ var slick_es6_min_default = /*#__PURE__*/__webpack_require__.n(slick_es6_min);
       return provider;
     },
     loadVisibleRowsIntoViewport: function loadVisibleRowsIntoViewport(forceRefresh) {
-      var self = this;
-      var vp = self.grid.getViewport();
-      console.log('vp', vp);
-      self.provider.ensureData(vp.top, vp.bottom, forceRefresh);
+      var vp = this.grid.getViewport();
+      this.provider.ensureData(vp.top, vp.bottom, forceRefresh);
     },
-    refreshColumn: function refreshColumn(columnName) {
-      // this.gridOptions.api.ensureColumnVisible(columnName)
-      // this.refreshAtColumn = false
+    refreshColumn: function refreshColumn(columnIndex) {
+      this.grid.scrollCellIntoView(this.currentStart, columnIndex);
+      this.refreshAtColumn = false;
     },
     refreshRow: function refreshRow() {
-      // this.gridOptions.api.ensureIndexVisible(this.currentStart, 'top')
-      // this.refreshAtRow = false
+      this.grid.scrollRowIntoView(this.currentStart);
+      this.refreshAtRow = false;
     },
     runTimeline: function runTimeline() {
-      // this.currentStart = this.gridOptions.api.getFirstDisplayedRow() || 0
+      var vp = this.grid.getViewport();
+      this.currentStart = vp.top;
       this.loadVisibleRowsIntoViewport(true);
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-0862fe54","hasScoped":false,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/timeline/timeline.vue
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-fe21ad2a","hasScoped":false,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/timeline/timeline.vue
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (!_vm.timeline)?_c('div',[_vm._v("\n  no timeline\n")]):_c('div',{staticClass:"row timeline"},[_c('div',{staticClass:"col-md-4"},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"uid"}},[_vm._v("User Id")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.timeline.uid),expression:"timeline.uid"}],staticClass:"form-control",domProps:{"value":(_vm.timeline.uid)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.timeline, "uid", $event.target.value)}}})]),_vm._v(" "),_c('vue-tabs',{ref:"timelineTabs",staticClass:"ops--tabs",on:{"tab-change":_vm.handleTabChange}},[_c('v-tab',{attrs:{"title":"Timeline"}},[_vm._l((_vm.timeline.ops),function(op,key,index){return _c('div',{key:key,staticClass:"row"},[_c('div',{staticClass:"col-md-12"},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col-md-12"},[_c(_vm.getComponentType(op),{tag:"component",attrs:{"op":op,"id":_vm.id},on:{"addRule":_vm.addRule,"freezeAtBoth":_vm.freezeAtBoth,"freezeAtColumn":_vm.freezeAtColumn,"freezeAtRow":_vm.freezeAtRow,"remove":_vm.remove,"removeRule":_vm.removeRule}})],1)])])])}),_vm._v(" "),_c('div',{staticClass:"row text-center"},[_c('button',{staticClass:"btn btn-default",on:{"click":_vm.addCompute}},[_vm._v("Add Column")]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",on:{"click":_vm.addSelect}},[_vm._v("Add Select")]),_vm._v(" "),_c('button',{staticClass:"btn btn-default",on:{"click":_vm.runTimeline}},[_vm._v("Run Timeline")])])],2),_vm._v(" "),_c('v-tab',{attrs:{"title":"Json"}},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.json),expression:"json"}],staticClass:"readonly-textarea",attrs:{"readonly":""},domProps:{"value":(_vm.json)},on:{"input":function($event){if($event.target.composing){ return; }_vm.json=$event.target.value}}})]),_vm._v(" "),_c('v-tab',{attrs:{"title":"Macro"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.macro),expression:"!macro"}],staticClass:"text-center"},[_c('img',{attrs:{"src":"static/images/loading.gif","alt":"loading macro data"}})]),_vm._v(" "),_c('textarea',{directives:[{name:"show",rawName:"v-show",value:(_vm.macro),expression:"macro"},{name:"model",rawName:"v-model",value:(_vm.macro),expression:"macro"}],staticClass:"readonly-textarea",attrs:{"readonly":""},domProps:{"value":(_vm.macro)},on:{"input":function($event){if($event.target.composing){ return; }_vm.macro=$event.target.value}}})])],1)],1),_vm._v(" "),_c('div',{staticClass:"col-md-8"},[_c('div',{staticClass:"row info"},[_c('div',{staticClass:"col-md-12"},[_c('span',{staticClass:"badge"},[_vm._v("Total Rows: "+_vm._s(_vm.totalRows))]),_vm._v(" "),_c('span',{staticClass:"badge"},[_vm._v("Load Time: "+_vm._s(_vm.duration)+" ms")]),_vm._v(" "),_c('div',{staticClass:"slickgrid-container",attrs:{"id":"slickGrid"}})])])]),_vm._v(" "),_c('context-menu',{ref:"ctxMenu",attrs:{"id":"context-menu"}},[_c('li',[_c('span',[_vm._v("test")])]),_vm._v(" "),_c('li',[_c('span',[_vm._v("hello world")])]),_vm._v(" "),_c('li',[_c('span',[_vm._v("good bye")])]),_vm._v(" "),_c('li',[_c('span',[_vm._v("get swifty")])])])],1)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ var timeline_timeline = (esExports);
 // CONCATENATED MODULE: ./src/timeline/timeline.vue
 function injectStyle (ssrContext) {
-  __webpack_require__("r+9J")
+  __webpack_require__("5s8i")
 }
 var normalizeComponent = __webpack_require__("VU/8")
 /* script */
@@ -2783,13 +2799,6 @@ var Component = normalizeComponent(
 
 /* harmony default export */ var src_timeline_timeline = __webpack_exports__["default"] = (Component.exports);
 
-
-/***/ }),
-
-/***/ "r+9J":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -2833,4 +2842,4 @@ webpackContext.id = "yK4o";
 /***/ })
 
 },["NHnr"]);
-//# sourceMappingURL=app.979ff4217e2a151d9105.js.map
+//# sourceMappingURL=app.79e9e010bb9b30d7e4ce.js.map
