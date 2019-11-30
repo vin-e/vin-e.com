@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata|Merriweather&display=swap");
+
+:root {
+  --background: var(--dark);
+
+  --dark-pop: #000;
+  --dark: #101010;
+  --dark-accent: #909090;
+
+  --light-pop: #bbb;
+  --light: #ddd;
+  --light-accent: #fff;
+
+  --padding: 4px;
+  --padding-2x: calc(var(--padding) * 2);
+  --padding-3x: calc(var(--padding) * 3);
+  --padding-4x: calc(var(--padding) * 4);
+}
+
+body {
+  color: var(--dark);
+  font-family: "Inconsolata", monospace;
+  margin: 0 auto;
+  padding: 0;
+}
+
+a,
+a:visited {
+  color: var(--dark-accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.header-name {
+  background: var(--light-accent);
+  font-size: 5vw;
+  padding: var(--padding-4x) var(--padding-2x);
+  position: relative;
+}
+
+.header-name:after {
+  content: "--------------";
+  display: block;
+  position: absolute;
+  bottom: -1.5vw;
+  z-index: 0;
+}
+.subheader-text {
+  margin-bottom: 42px;
+  padding-left: var(--padding-2x);
+}
+
+.nav-links {
+  font-size: 21px;
+  padding: var(--padding-2x) var(--padding);
+  z-index: 1;
+}
+.nav-links a,
+.nav-links a:visited {
+  border-bottom: dashed 2px transparent;
+  color: var(--dark-accent);
+  display: inline-block;
+  padding: var(--padding) var(--padding-2x);
+  text-decoration: none;
+}
+.nav-links a:hover {
+  border-bottom-color: var(--light-pop);
+  color: var(--dark-accent);
+}
+
+.social-icon svg {
+  width: 18px;
+}
+
+.content {
+  display: flex;
+  padding: var(--padding-2x);
+}
+@media (min-width: 800px) {
+  .content__text {
+    max-width: 80%;
+  }
+}
+
+h2 {
+  margin: var(--padding-2x) var(--padding);
+}
+h2 + h3 {
+  margin: var(--padding-2x) var(--padding);
+}
+
+/*
+.header .links {
+  margin-right: 8px;
+}
+.header .links a:not(.social-link) {
+  display: block;
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .header {
+    display: block;
+  }
+  .header .name {
+    border-bottom: solid 1px var(--light);
+    width: 100%;
+  }
+}
+
+a,
+a:visited {
+  border-bottom: solid 1px transparent;
+  border-top: solid 1px transparent;
+  color: var(--dark);
+  padding: 2px 0;
+  text-decoration: none;
+}
+a:hover {
+  border-bottom-color: var(--dark-accent);
+  color: var(--dark-accent);
+}
+.header .links a:not(.social-link):not(:first-of-type):hover {
+  border-top: solid 1px var(--dark-accent);
+} */
