@@ -6,6 +6,6 @@ layout: layout/default.njk
 
 # Employment
 
-if you found this, i don't know how you did but this is a WIP. expect this to be updated at some point.
+How did you found this page? I don't know how you did but this is a work in progress... I am still thinking of how I want to display the data. Expect this to be updated at some point.
 
 <div id="employment"></div>
