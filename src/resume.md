@@ -6,4 +6,6 @@ layout: layout/page.njk
 
 # Employment
 
+if you found this, i don't know how you did but this is a WIP. expect this to be updated at some point.
+
 <div id="employment"></div>

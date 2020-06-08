@@ -5,7 +5,7 @@ const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language")
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images")
   eleventyConfig.addPassthroughCopy("src/css")
-  eleventyConfig.addPassthroughCopy("src/js")
+  eleventyConfig.addPassthroughCopy("src/scripts")
   eleventyConfig.addPlugin(inclusiveLangPlugin)
 
   eleventyConfig.addPlugin(syntaxHighlight, {
