@@ -11,11 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Eleventy Action
-      uses: TartanLlama/actions-eleventy@v1.2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
       with:
-        install_dependencies: true
-
+        node-version: '12.x'
+    - run: npm install
+    - run: npm run build --if-present
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
       with:
