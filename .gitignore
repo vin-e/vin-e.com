@@ -1,2 +1,7 @@
 node_modules/
 dist/
+
+.DS_Store
+
+# compiled css
+/src/css/styles.css
