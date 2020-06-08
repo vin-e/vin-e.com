@@ -1,5 +1,5 @@
 ---
-layout: layout/page.njk
+layout: layout/default.njk
 ---
 <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet">
 <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
