@@ -1,0 +1,13 @@
+---
+title: Digital Garden Wall
+layout: layout/default.njk
+excludeFooter: true
+---
+
+<ul class="mt-4">
+{% for post in collections.posts | reverse %}
+  {% if loop.index <= 8 %}
+  <li class="py-2"><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+  {% endif %}
+{% endfor %}
+</ul>

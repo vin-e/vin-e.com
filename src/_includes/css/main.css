@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata|Merriweather&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  font-family: 'Inconsolata', sans-serif;
+}
+
+a {
+  @apply .text-purple-500 .truncate .transition-colors .duration-300 .ease-in-out;
+}
+a:hover {
+  @apply .text-purple-300;
+}
+
+p {
+  @apply .my-3;
+}

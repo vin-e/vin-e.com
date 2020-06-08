@@ -1,0 +1,4 @@
+{
+    "layout": "layout/default.njk",
+    "tags": ["posts"]
+}
