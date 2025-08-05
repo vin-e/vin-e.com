@@ -6,106 +6,156 @@ import TrimMark from "../components/TrimMark.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Vincent Chavez, Senior full stack developer with a focus on frontend</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<div class="content">
-			<RegistrationText text="Vincent Chavez" color="black" style="font-size: var(--font-size-800);"/>
-			<p>Senior full stack developer with a focus on frontend.</p>
-			<div class="links">
-				<a href="https://linkedin.com/in/vincentchavez34" target="_blank" rel="noopener noreferrer">
-					<RegistrationText text="LinkedIn" color="black" style="font-size: var(--font-size-400);" distance="2px" />
-				</a>
-				<a href="https://github.com/vin-e" target="_blank" rel="noopener noreferrer">
-					<RegistrationText text="Github" color="black" style="font-size: var(--font-size-400);" distance="2px" />
-				</a>
-			</div>
-		</div>
-		
-		<RegistrationMark location="top" />
-		<RegistrationMark location="bottom" />
-		<RegistrationMark location="left" />
-		<RegistrationMark location="right" />
-		<TrimMark location="topLeft" />
-		<TrimMark location="topRight" />
-		<TrimMark location="bottomLeft" />
-		<TrimMark location="bottomRight" />
-		<ColorSwatch color="cyan" position="topLeft" />
-		<ColorSwatch color="magenta" position="topRight" />
-		<ColorSwatch color="yellow" position="bottomLeft" />
-		<ColorSwatch color="black" position="bottomRight" />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      Vincent Chavez, Senior full stack developer with a focus on frontend
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="print-container-top">
+      <RegistrationMark location="top" />
+      <TrimMark location="topLeft" />
+      <TrimMark location="topRight" />
+      <ColorSwatch color="cyan" position="topLeft" />
+      <ColorSwatch color="magenta" position="topRight" />
+    </div>
+    <div class="print-container-middle">
+      <RegistrationMark location="left" />
+      <RegistrationMark location="right" />
+    </div>
+    <div class="content">
+      <RegistrationText
+        text="Vincent Chavez"
+        color="black"
+        style="font-size: var(--font-size-800);"
+      />
+      <p>Senior full stack developer with a focus on frontend.</p>
+      <div class="links">
+        <a
+          href="https://linkedin.com/in/vincentchavez34"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <RegistrationText
+            text="LinkedIn"
+            color="black"
+            style="font-size: var(--font-size-400);"
+            distance="2px"
+          />
+        </a>
+        <a
+          href="https://github.com/vin-e"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <RegistrationText
+            text="Github"
+            color="black"
+            style="font-size: var(--font-size-400);"
+            distance="2px"
+          />
+        </a>
+      </div>
+    </div>
+    <div class="print-container-bottom">
+      <RegistrationMark location="bottom" />
+      <TrimMark location="bottomLeft" />
+      <TrimMark location="bottomRight" />
+      <ColorSwatch color="yellow" position="bottomLeft" />
+      <ColorSwatch color="black" position="bottomRight" />
+    </div>
+  </body>
 </html>
 
 <style>
-	:root {
-		--font-size-100: clamp(0.7035rem, 0.8131rem + -0.1414vw, 0.7813rem);
-		--font-size-200: clamp(0.9375rem, 0.9374rem + 0.0004vw, 0.9377rem);
-		--font-size-300: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
-		--font-size-400: clamp(1.35rem, 1.2206rem + 0.575vw, 1.6663rem);
-		--font-size-500: clamp(1.62rem, 1.3741rem + 1.0929vw, 2.2211rem);
-		--font-size-600: clamp(1.944rem, 1.5281rem + 1.8486vw, 2.9607rem);
-		--font-size-700: clamp(2.3328rem, 1.6726rem + 2.9343vw, 3.9467rem);
-		--font-size-800: clamp(2.7994rem, 1.7924rem + 4.4755vw, 5.2609rem);
-	}
-	
-	body {
-		font-family: "Open Sans", sans-serif;
-		font-optical-sizing: auto;
-		font-weight: 400;
-		font-style: normal;
-		font-variation-settings:
-			"wdth" 100;
-		padding: 32px;
-	}
+  :root {
+    --font-size-100: clamp(0.7035rem, 0.8131rem + -0.1414vw, 0.7813rem);
+    --font-size-200: clamp(0.9375rem, 0.9374rem + 0.0004vw, 0.9377rem);
+    --font-size-300: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+    --font-size-400: clamp(1.35rem, 1.2206rem + 0.575vw, 1.6663rem);
+    --font-size-500: clamp(1.62rem, 1.3741rem + 1.0929vw, 2.2211rem);
+    --font-size-600: clamp(1.944rem, 1.5281rem + 1.8486vw, 2.9607rem);
+    --font-size-700: clamp(2.3328rem, 1.6726rem + 2.9343vw, 3.9467rem);
+    --font-size-800: clamp(2.7994rem, 1.7924rem + 4.4755vw, 5.2609rem);
+  }
 
-	.content {
-		align-items: center;
-		background: #c3c3c3;
-		display: flex;
-		flex-direction: column;
-		height: calc(100vh - 64px);
-		justify-content: center;
-		margin: -10px;
-		text-align: center;
-		width: calc(100vw - 60px);
-	}
+  body {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    margin: 0;
+    padding: 0;
+  }
 
-	p {
-		margin-top: 40px;
-		text-wrap: balance;
-	}
+  .print-container-top {
+    position: static;
+  }
 
-	.links {
-		display: flex;
-		flex-direction: row;
-		gap: 16px;
-		margin-top: 20px;
+  .print-container-middle {
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+  }
 
-		& a {
-			background: rgba(225, 225, 225, 1);
-			border: 1px solid rgba(0, 0, 0, 0.5);
-			border-radius: 10px;
-			padding: 10px 16px;
-			text-decoration: none;
+  .print-container-bottom {
+    position: relative;
+  }
 
-			&:hover {
-				box-shadow: #000 0px 0px 0px 2px inset;
-			}
-		}
-	}
+  .content {
+    align-items: center;
+    background: #c3c3c3;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 64px);
+    justify-content: center;
+    margin: 32px;
+    min-height: 420px;
+    text-align: center;
+    width: calc(100vw - 64px);
+  }
 
-	@media (max-width: 600px) {
-		.links {
-			flex-direction: column;
-		}
-	}
+  p {
+    margin-top: 40px;
+    text-wrap: balance;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 20px;
+
+    & a {
+      background: rgba(225, 225, 225, 1);
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      padding: 10px 16px;
+      text-decoration: none;
+
+      &:hover {
+        box-shadow: #000 0px 0px 0px 2px inset;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .links {
+      flex-direction: column;
+    }
+  }
 </style>

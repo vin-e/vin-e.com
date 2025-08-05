@@ -8,8 +8,8 @@ const { location } = Astro.props;
 const style = {
   top: 'top: 0; left: 50%; transform: translateX(-50%);margin-top: calc(-1 * var(--registration-line-extension));',
   bottom: 'bottom: 0; left: 50%; transform: translateX(-50%);margin-bottom: calc(-1 * var(--registration-line-extension));',
-  left: 'left: 0; top: 50%; transform: translateY(-50%);margin-left: calc(-1 * var(--registration-line-extension));',
-  right: 'right: 0; top: 50%; transform: translateY(-50%);margin-right: calc(-1 * var(--registration-line-extension));',
+  left: 'left: 0; top: max(234px, calc(100vh - 50%)); margin-left: calc(-1 * var(--registration-line-extension));',
+  right: 'right: 0; top: max(234px, calc(100vh - 50%)); margin-right: calc(-1 * var(--registration-line-extension));',
 }[location];
 ---
 
@@ -22,7 +22,7 @@ const style = {
 		border: 1px solid #000;
 		border-radius: 50%;
 		height: 16px;
-		position: fixed;
+		position: absolute;
 		width: 16px;
 		z-index: -1;
 
