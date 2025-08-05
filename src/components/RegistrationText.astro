@@ -1,0 +1,96 @@
+---
+interface Props {
+  color?: "black" | "white";
+  distance?: string;
+  style?: string;
+  text: string;
+}
+
+const { color, distance, style, text } = Astro.props;
+
+const colorMap = {
+  black: "rgba(0, 0, 0, 0.8)",
+  blackHover: "rgba(0, 0, 0, 1)",
+  white: "rgba(255, 255, 255, 0.8)",
+  whiteHover: "rgba(255, 255, 255, 1)",
+};
+---
+
+<div
+  class="registration"
+  data-text={text}
+  style={`
+    --registration-color: ${color ? colorMap[color] : colorMap.black};
+    --registration-color-hover: ${color ? colorMap[`${color}Hover`] : colorMap.blackHover};
+    --registration-distance: ${distance || '5px'};`
+    + (style || "")
+  }
+>
+  {text}
+  <div data-text={text}></div>
+</div>
+
+<style>
+  .registration {
+		--registration-transition: all 0.2s ease-in-out;
+    
+    color: var(--registration-color);
+    font-family: "Google Sans Code", monospace;
+    font-optical-sizing: auto;
+    font-size: 10rem;
+    font-style: normal;
+    font-weight: 700;
+    position: relative;
+    z-index: 10;
+
+    &::after {
+      color: rgba(255, 0, 255, 0.8);
+      content: attr(data-text);
+      left: 0;
+      position: absolute;
+      top: var(--registration-distance);
+      transition: var(--registration-transition);
+      z-index: -1;
+    }
+
+    &::before {
+      color: rgba(0, 255, 255, 0.8);
+      content: attr(data-text);
+      left: var(--registration-distance);
+      position: absolute;
+      top: 0px;
+      transition: var(--registration-transition);
+      z-index: -1;
+
+      /* HACK for cyan to prevent overflow */
+      width: calc(100% + var(--registration-distance));
+    }
+
+    & div::after {
+      bottom: 5px;
+      color: rgba(255, 255, 0, 0.8);
+      content: attr(data-text);
+      position: absolute;
+      transition: var(--registration-transition);
+      left: calc(-1 * var(--registration-distance));
+      z-index: -1;
+    }
+
+    &:hover {
+      color: var(--registration-color-hover);
+
+      &::after,
+      &::before,
+      & div::after {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+      }
+
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+</style>

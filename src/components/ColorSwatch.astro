@@ -1,0 +1,54 @@
+---
+interface Props {
+  color: 'cyan' | 'magenta' | 'yellow' | 'black';
+  position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+}
+
+const { color, position } = Astro.props;
+
+const colorMap = {
+  cyan: '0, 255, 255',
+  magenta: '255, 0, 255',
+  yellow: '255, 255, 0',
+  black: '0, 0, 0',
+};
+
+const positionStyles = {
+  topLeft: 'top: 60px; left: 0px;',
+  topRight: 'top: 60px; right: 0px;',
+  bottomLeft: 'bottom: 60px; left: 0px;',
+  bottomRight: 'bottom: 60px; right: 0px;',
+}[position];
+
+---
+
+<div class="color-swatch" style={`--color-swatch-color: ${colorMap[color]}; ${positionStyles}`}>
+  <div style="--color-swatch-percent: 1.0; --color-swatch-font-color: 255, 255, 255;">100</div>
+  <div style="--color-swatch-percent: 0.75; --color-swatch-font-color: 255, 255, 255;">75</div>
+  <div style="--color-swatch-percent: 0.5; --color-swatch-font-color: 255, 255, 255;">50</div>
+  <div style=`--color-swatch-percent: 0.25; --color-swatch-font-color: ${colorMap[color]};`>25</div>
+  <div style=`--color-swatch-percent: 0.05; --color-swatch-font-color: ${colorMap[color]};`>5</div>
+</div>
+
+<style>
+  .color-swatch {
+    position: fixed;
+    /* top: 60px;
+    left: 0px; */
+
+    & div {
+      align-items: center;
+      background-color: rgba(var(--color-swatch-color), var(--color-swatch-percent));
+      border: 1px solid rgb(var(--color-swatch-color));
+      color: rgb(var(--color-swatch-font-color));
+      display: flex;
+      flex-direction: column;
+      font-size: .5rem;
+      gap: 0px;
+      height: 20px;
+      justify-content: center;
+      padding: 4px;
+      width: 20px;
+    }
+  }
+</style>

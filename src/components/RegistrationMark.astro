@@ -1,0 +1,52 @@
+---
+interface Props {
+  location: 'top' | 'bottom' | 'left' | 'right';
+}
+
+const { location } = Astro.props;
+
+const style = {
+  top: 'top: 0; left: 50%; transform: translateX(-50%);margin-top: calc(-1 * var(--registration-line-extension));',
+  bottom: 'bottom: 0; left: 50%; transform: translateX(-50%);margin-bottom: calc(-1 * var(--registration-line-extension));',
+  left: 'left: 0; top: 50%; transform: translateY(-50%);margin-left: calc(-1 * var(--registration-line-extension));',
+  right: 'right: 0; top: 50%; transform: translateY(-50%);margin-right: calc(-1 * var(--registration-line-extension));',
+}[location];
+---
+
+<div class="registration-mark" style={style} />
+
+<style>
+  .registration-mark {
+		--registration-line-extension: -8px;
+
+		border: 1px solid #000;
+		border-radius: 50%;
+		height: 16px;
+		position: fixed;
+		width: 16px;
+		z-index: -1;
+
+		&::before {
+			background-color: black;
+			bottom: var(--registration-line-extension);
+      content: " ";
+			height: calc(100% + var(--registration-line-extension) * -2);
+			left: 50%;
+			position: absolute;
+			top: var(--registration-line-extension);
+			transform: translateX(-50%);
+			width: 1px;
+		}
+
+		&::after {
+			background-color: #000;
+      content: " ";
+			height: 1px;
+			left: var(--registration-line-extension);
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: calc(100% + var(--registration-line-extension) * -2);
+		}
+	}
+</style>
